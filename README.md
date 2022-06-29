@@ -4,7 +4,7 @@ BBC iPlayer stores subtitles in a strange ttml format. This is a program to tran
 
 For ttml subs downloaded from Netflix, HBO etc. see https://github.com/yuppity/ttml2srt.
 
-This is deigned to be run from the command line as follows
+This is designed to be run from the command line as follows
 
 ```bash
 ./ttml2srt.py subtitle_from_iplayer.ttml
