@@ -37,13 +37,15 @@ class ttml2srt():
     def getTimes(self):
         times = self.ttml_file.getElementsByTagName('p')
         for time in times:
-            self.times.append([time.attributes['begin'].value,
-                              time.attributes['end'].value])
+            begin_time = time.attributes['begin'].value.replace('.', ',')
+            end_time = time.attributes['end'].value.replace('.', ',')
+            self.times.append([begin_time,
+                              end_time])
 
     def format_srt(self):
         for no, sub, time in zip(range(1, len(
                 self.subs) + 1), self.subs, self.times):
-            self.srt += (f'{no}\n{time[0]} -- > {time[1]}\n{sub}\n\n')
+            self.srt += (f'{no}\n{time[0]} --> {time[1]}\n{sub}\n\n')
         return self.srt
 
     def write_srt(self):
