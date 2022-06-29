@@ -24,9 +24,9 @@ class ttml2srt():
         filetext = textfile.read()
         textfile.close()
         new_text = re.sub('</span><br/><span style="S[0-9]">',
-                          ' ', filetext)
+                          '\n', filetext)
         new_text = re.sub('</span><span style="S[0-9]">',
-                          ' ', new_text)
+                          '\n', new_text)
         return new_text
 
     def getText(self):
