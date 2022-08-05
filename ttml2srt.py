@@ -63,8 +63,10 @@ if __name__ == '__main__':
         description='Convert TTML document to SubRip (SRT).')
     argparser.add_argument('ttml-file',
                            help='TTML subtitle file',
-                           action='store')
+                           action='store',
+                           nargs='+')
     args = argparser.parse_args()
 
-    ttml = ttml2srt(getattr(args, 'ttml-file'))
-    ttml.write_srt()
+    for arg in vars(args)['ttml-file']:
+        ttml = ttml2srt(arg)
+        ttml.write_srt()
