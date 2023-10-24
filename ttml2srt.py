@@ -38,7 +38,13 @@ class ttml2srt():
         times = self.ttml_file.getElementsByTagName('p')
         for time in times:
             begin_time = time.attributes['begin'].value.replace('.', ',')
+            ''' Fixes an error where the microseconds are omitted from
+            the start or end times resulting in an invalid srt file'''
+            if len(begin_time) == 8:
+                begin_time = begin_time + ",000"
             end_time = time.attributes['end'].value.replace('.', ',')
+            if len(end_time) == 8:
+                end_time = end_time + ",000"
             self.times.append([begin_time,
                               end_time])
 
